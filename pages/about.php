@@ -6,7 +6,7 @@
 $page_title  = 'About Us — Our Mission & Story';
 $page_desc   = 'Learn about Aham Premah Foundation — our mission, values, and the work we do for animals in Pune, Maharashtra.';
 $active_page = 'about';
-include '../includes/header.php';
+include './includes/header.php';
 ?>
 
 <!-- Page Hero -->

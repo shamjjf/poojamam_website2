@@ -12,7 +12,7 @@ $active_page = $active_page ?? '';
 
 // Detect root path relative to current file
 $depth = substr_count($_SERVER['PHP_SELF'], '/') - 1;
-$root  = ($depth <= 1) ? './' : '../';
+$root  = ($depth <= 1) ? './' : './';
 ?>
 <!DOCTYPE html>
 <html lang="en">
