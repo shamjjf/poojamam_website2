@@ -108,7 +108,7 @@ include SITE_ROOT . '/includes/header.php';
         <div class="contact-item-icon">📍</div>
         <div class="contact-item-content">
           <div class="contact-item-label">Location</div>
-          <div class="contact-item-value">Pimpri Chinchwad, Pune,<br>Maharashtra, India</div>
+          <div class="contact-item-value">Wagholi, Pune,<br>Maharashtra, India</div>
         </div>
       </div>
 
