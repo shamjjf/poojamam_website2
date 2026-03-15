@@ -6,7 +6,8 @@
 $page_title  = 'About Us — Our Mission & Story';
 $page_desc   = 'Learn about Aham Premah Foundation — our mission, values, and the work we do for animals in Pune, Maharashtra.';
 $active_page = 'about';
-include './includes/header.php';
+define('SITE_ROOT', realpath(dirname(__FILE__) . '/..'));
+include SITE_ROOT . '/includes/header.php';
 ?>
 
 <!-- Page Hero -->
@@ -184,7 +185,7 @@ include './includes/header.php';
   </div>
 </div>
 
-<?php include '../includes/footer.php'; ?>
+<?php include SITE_ROOT . '/includes/footer.php'; ?>
 
 <style>
 /* Scope grid */

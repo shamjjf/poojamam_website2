@@ -6,7 +6,8 @@
 $page_title  = 'Our Activities — What We Do for Animals';
 $page_desc   = 'Explore all the activities and initiatives of Aham Premah Foundation — from PETA collaborations to wild bird rescues and college seminars.';
 $active_page = 'activities';
-include '../includes/header.php';
+define('SITE_ROOT', realpath(dirname(__FILE__) . '/..'));
+include SITE_ROOT . '/includes/header.php';
 ?>
 
 <!-- Page Hero -->
@@ -302,7 +303,7 @@ include '../includes/header.php';
   </div>
 </div>
 
-<?php include '../includes/footer.php'; ?>
+<?php include SITE_ROOT . '/includes/footer.php'; ?>
 
 <style>
 .activity-img-emoji {

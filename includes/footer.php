@@ -3,8 +3,18 @@
  * AHAM PREMAH FOUNDATION
  * includes/footer.php
  */
-$depth = substr_count($_SERVER['PHP_SELF'], '/') - 1;
-$root  = ($depth <= 1) ? './' : '../';
+
+// Use same $root from header — if not set, recalculate
+if (!isset($root)) {
+    $_protocol  = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+    $_host      = $_SERVER['HTTP_HOST'];
+    $_doc_root  = rtrim(realpath($_SERVER['DOCUMENT_ROOT']), '/\\');
+    $_site_root = rtrim(realpath(dirname(__FILE__) . '/..'), '/\\');
+    $_base_path = str_replace($_doc_root, '', $_site_root);
+    $_base_path = '/' . trim(str_replace('\\', '/', $_base_path), '/');
+    if ($_base_path === '/') $_base_path = '';
+    $root = $_protocol . '://' . $_host . $_base_path . '/';
+}
 ?>
 
 <!-- CTA Banner -->
@@ -23,7 +33,7 @@ $root  = ($depth <= 1) ? './' : '../';
 <footer class="footer">
   <div class="footer-grid">
     <div class="footer-brand">
-      <img src="<?php echo $root; ?>images/logo-variant.jpg" alt="Aham Premah Foundation">
+      <img src="<?php echo $root; ?>images/logo-black.jpg" alt="Aham Premah Foundation">
       <p>Dedicated to the holistic welfare of animals — rescue, nourishment, affection, sterilization, and community empowerment. With love, we thrive.</p>
       <div class="footer-socials">
         <a href="#" class="social-btn" title="Facebook">f</a>
@@ -35,11 +45,11 @@ $root  = ($depth <= 1) ? './' : '../';
 
     <div class="footer-col">
       <h4>Quick Links</h4>
-      <a href="<?php echo $root; ?>index.php"> Home</a>
-      <a href="<?php echo $root; ?>pages/about.php"> About Us</a>
-      <a href="<?php echo $root; ?>pages/activities.php"> Activities</a>
-      <a href="<?php echo $root; ?>pages/gallery.php"> Gallery</a>
-      <a href="<?php echo $root; ?>pages/contact.php"> Contact</a>
+      <a href="<?php echo $root; ?>index.php">🏠 Home</a>
+      <a href="<?php echo $root; ?>pages/about.php">ℹ About Us</a>
+      <a href="<?php echo $root; ?>pages/activities.php">🐾 Activities</a>
+      <a href="<?php echo $root; ?>pages/gallery.php">🖼 Gallery</a>
+      <a href="<?php echo $root; ?>pages/contact.php">✉ Contact</a>
     </div>
 
     <div class="footer-col">
@@ -66,7 +76,7 @@ $root  = ($depth <= 1) ? './' : '../';
   </div>
 </footer>
 
-<!-- Main JS -->
+<!-- Main JS — absolute URL -->
 <script src="<?php echo $root; ?>js/main.js"></script>
 </body>
 </html>

@@ -6,7 +6,8 @@
 $page_title  = 'Gallery — Photos & Memories';
 $page_desc   = 'Photo gallery from Aham Premah Foundation activities — events, rescues, seminars, and more.';
 $active_page = 'gallery';
-include '../includes/header.php';
+define('SITE_ROOT', realpath(dirname(__FILE__) . '/..'));
+include SITE_ROOT . '/includes/header.php';
 ?>
 
 <!-- Page Hero -->
@@ -183,7 +184,7 @@ include '../includes/header.php';
   </div>
 </div>
 
-<?php include '../includes/footer.php'; ?>
+<?php include SITE_ROOT . '/includes/footer.php'; ?>
 
 <style>
 /* Filter Buttons */

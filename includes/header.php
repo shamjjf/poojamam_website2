@@ -2,17 +2,28 @@
 /**
  * AHAM PREMAH FOUNDATION
  * includes/header.php
- * Usage: include at top of every page
- * Pass: $page_title, $page_desc, $active_page
  */
 
-$page_title = $page_title ?? 'Aham Premah Foundation';
-$page_desc  = $page_desc  ?? 'Dedicated to the holistic welfare of animals — rescue, nourishment, affection, sterilization, and community empowerment.';
+$page_title  = $page_title  ?? 'Aham Premah Foundation';
+$page_desc   = $page_desc   ?? 'Dedicated to the holistic welfare of animals — rescue, nourishment, affection, sterilization, and community empowerment.';
 $active_page = $active_page ?? '';
 
-// Detect root path relative to current file
-$depth = substr_count($_SERVER['PHP_SELF'], '/') - 1;
-$root  = ($depth <= 1) ? './' : './';
+// -------------------------------------------------------
+// BULLETPROOF ABSOLUTE URL — works on EasyPanel /app, 
+// cPanel, shared hosting, Docker, any server
+// Never uses relative paths for assets — always absolute
+// -------------------------------------------------------
+$_protocol  = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$_host      = $_SERVER['HTTP_HOST'];
+$_doc_root  = rtrim(realpath($_SERVER['DOCUMENT_ROOT']), '/\\');
+$_site_root = rtrim(realpath(dirname(__FILE__) . '/..'), '/\\');
+$_base_path = str_replace($_doc_root, '', $_site_root);
+$_base_path = '/' . trim(str_replace('\\', '/', $_base_path), '/');
+if ($_base_path === '/') $_base_path = '';
+$base_url   = $_protocol . '://' . $_host . $_base_path;
+// $root ends with / — e.g. "https://yourdomain.com/"
+// All asset links: $root . 'css/style.css' etc.
+$root = $base_url . '/';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,10 +38,9 @@ $root  = ($depth <= 1) ? './' : './';
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Main CSS -->
+  <!-- Main CSS — absolute URL, never breaks -->
   <link rel="stylesheet" href="<?php echo $root; ?>css/style.css">
 
-  <!-- Favicon (inline SVG as data URI) -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
 </head>
 <body>

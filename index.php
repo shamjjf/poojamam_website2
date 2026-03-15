@@ -6,7 +6,8 @@
 $page_title  = 'With Love We Thrive — Animal Welfare NGO, Pune';
 $page_desc   = 'Aham Premah Foundation is an NGO dedicated to holistic animal welfare — rescue, feeding, sterilization, legal advocacy, and education in Pune, India.';
 $active_page = 'home';
-include 'includes/header.php';
+define('SITE_ROOT', __DIR__);
+include SITE_ROOT . '/includes/header.php';
 ?>
 
 <!-- ======== HERO ======== -->
@@ -29,10 +30,11 @@ include 'includes/header.php';
       <a href="pages/contact.php" class="btn btn-outline-white">Get Involved</a>
     </div>
     <div class="hero-tagline-strip">
-      <span>❤ Love </span>
-      <span> | ✊ Act</span>
-      <span> | 🆘 Rescue</span>
-      <span> | 🍽 Feed</span>
+      <span>❤ Love</span>
+      <span>✊ Act</span>
+      <span>🆘 Rescue</span>
+      <span>🍽 Feed</span>
+      <span>🔁 Repeat</span>
     </div>
   </div>
 </section>
@@ -189,7 +191,7 @@ include 'includes/header.php';
   </div>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php include SITE_ROOT . '/includes/footer.php'; ?>
 
 <!-- ======== HOME PAGE EXTRA CSS ======== -->
 <style>

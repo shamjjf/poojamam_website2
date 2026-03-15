@@ -48,7 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-include '../includes/header.php';
+define('SITE_ROOT', realpath(dirname(__FILE__) . '/..'));
+include SITE_ROOT . '/includes/header.php';
 ?>
 
 <!-- Page Hero -->
@@ -107,7 +108,7 @@ include '../includes/header.php';
         <div class="contact-item-icon">📍</div>
         <div class="contact-item-content">
           <div class="contact-item-label">Location</div>
-          <div class="contact-item-value">Wagholi, Pune,<br>Maharashtra, India</div>
+          <div class="contact-item-value">Pimpri Chinchwad, Pune,<br>Maharashtra, India</div>
         </div>
       </div>
 
@@ -276,7 +277,7 @@ include '../includes/header.php';
   </div>
 </div>
 
-<?php include '../includes/footer.php'; ?>
+<?php include SITE_ROOT . '/includes/footer.php'; ?>
 
 <style>
 .support-grid {
